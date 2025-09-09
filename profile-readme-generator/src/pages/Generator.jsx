@@ -173,14 +173,14 @@ export default function Generator() {
         {/* Quick Tips */}
         <div className="mt-12">
           <div className="card p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-            <h3 className="text-lg font-semibold text-slate-900 mb-3">💡 Pro Tips</h3>
+            <h3 className="text-lg font-semibold text-slate-900 mb-3">💡 Tips for a Great Profile</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-slate-700">
-              <div>• Add your GitHub username for automatic stats</div>
-              <div>• Include 3-5 key skills you want to highlight</div>
-              <div>• Write a compelling tagline that describes you</div>
-              <div>• Add 2-3 of your best projects</div>
-              <div>• Include social links for networking</div>
-              <div>• Keep your about section concise but personal</div>
+              <div>• Include your GitHub username for stats</div>
+              <div>• Select your key skills and technologies</div>
+              <div>• Write a compelling tagline</div>
+              <div>• Showcase your best projects</div>
+              <div>• Add your social and contact links</div>
+              <div>• Keep your bio concise and personal</div>
             </div>
           </div>
         </div>

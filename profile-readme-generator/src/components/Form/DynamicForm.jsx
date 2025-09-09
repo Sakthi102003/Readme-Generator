@@ -162,7 +162,7 @@ export default function DynamicForm({ schema, value, onChange }) {
                   <div className="text-center py-8 text-slate-500">
                     <div className="text-4xl mb-2">📝</div>
                     <div className="font-medium">No {field.itemLabel?.toLowerCase() || 'items'} added yet</div>
-                    <div className="text-sm">Click the button above to add your first {field.itemLabel?.toLowerCase() || 'item'}</div>
+                    <div className="text-sm">Add your first {field.itemLabel?.toLowerCase() || 'item'} to get started</div>
                   </div>
                 )}
               </div>

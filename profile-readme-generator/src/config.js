@@ -441,10 +441,10 @@ export const defaultSkills = [
 ];
 
 export const socialFields = [
-  { id: 'github', label: 'GitHub Username', placeholder: 'your-github-username' },
-  { id: 'linkedin', label: 'LinkedIn URL', placeholder: 'https://linkedin.com/in/username' },
-  { id: 'twitter', label: 'Twitter/X URL', placeholder: 'https://x.com/username' },
-  { id: 'website', label: 'Website/Portfolio', placeholder: 'https://yourdomain.com' },
-  { id: 'email', label: 'Email', placeholder: 'you@example.com' },
-  { id: 'instagram', label: 'Instagram URL', placeholder: 'https://instagram.com/username' },
+  { id: 'github', label: 'GitHub Username', placeholder: '' },
+  { id: 'linkedin', label: 'LinkedIn URL', placeholder: '' },
+  { id: 'twitter', label: 'Twitter/X URL', placeholder: '' },
+  { id: 'website', label: 'Website/Portfolio', placeholder: '' },
+  { id: 'email', label: 'Email', placeholder: '' },
+  { id: 'instagram', label: 'Instagram URL', placeholder: '' },
 ];

@@ -30,10 +30,7 @@ export default function Footer() {
               <a href="/generator" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
                 Generator
               </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
-                GitHub Examples
-              </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
+              <a href="#" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
                 Documentation
               </a>
             </div>
@@ -60,20 +57,16 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-6 text-sm">
             <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noreferrer" 
+              href="#" 
               className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
             >
-              ⭐ Star on GitHub
+              ⭐ GitHub
             </a>
             <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noreferrer" 
+              href="#" 
               className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
             >
-              🐦 Share on Twitter
+              � Share
             </a>
           </div>
         </div>

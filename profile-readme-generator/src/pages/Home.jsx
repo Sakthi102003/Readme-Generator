@@ -50,23 +50,21 @@ export default function Home() {
               🚀 Start Creating
             </Link>
             <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noreferrer" 
+              href="#features" 
               className="btn-outline text-lg px-8 py-4 hover:scale-105"
             >
-              📖 View Examples
+              📖 Learn More
             </a>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-md mx-auto mt-12">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-blue-600">10k+</div>
+              <div className="text-2xl md:text-3xl font-bold text-blue-600">∞</div>
               <div className="text-sm text-slate-600">Profiles Created</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-purple-600">50+</div>
+              <div className="text-2xl md:text-3xl font-bold text-purple-600">∞</div>
               <div className="text-sm text-slate-600">Templates</div>
             </div>
             <div className="text-center">
@@ -78,7 +76,7 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="container-lg py-16">
+      <div id="features" className="container-lg py-16">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Why Choose Our Generator?
@@ -136,26 +134,12 @@ export default function Home() {
 
           <div className="card-elevated p-8 bg-gradient-to-br from-blue-50 to-purple-50">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900">Preview Example</h3>
+              <h3 className="text-2xl font-bold text-slate-900">Ready to Get Started?</h3>
               <div className="bg-white rounded-lg p-6 space-y-4 border-l-4 border-blue-500">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                    JD
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">John Developer</h4>
-                    <p className="text-slate-600">Full Stack Developer & AI Enthusiast</p>
-                  </div>
-                </div>
-                <p className="text-slate-700 text-sm">
-                  🚀 Building amazing web experiences with React & Node.js
-                  <br />
-                  💡 Passionate about clean code and innovative solutions
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="badge badge-blue">JavaScript</span>
-                  <span className="badge badge-purple">React</span>
-                  <span className="badge badge-green">Node.js</span>
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🚀</div>
+                  <h4 className="font-bold text-slate-900 mb-2">Start Building Your Profile</h4>
+                  <p className="text-slate-600 mb-4">Create a professional GitHub README that showcases your skills and projects.</p>
                 </div>
               </div>
             </div>
@@ -170,7 +154,7 @@ export default function Home() {
             Ready to Stand Out?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of developers who have transformed their GitHub profiles. 
+            Start building your professional GitHub profile today. 
             Create yours in minutes, not hours.
           </p>
           <Link to="/generator" className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">

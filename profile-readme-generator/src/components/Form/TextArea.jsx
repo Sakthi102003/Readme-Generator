@@ -48,7 +48,7 @@ const TextArea = React.memo(function TextArea({ id, label, placeholder, value, o
         )}
       </div>
       {placeholder && !isFocused && !localValue && (
-        <p className="text-xs text-slate-500">Example: {placeholder}</p>
+        <p className="text-xs text-slate-500">Enter your {label.toLowerCase()}</p>
       )}
     </div>
   );

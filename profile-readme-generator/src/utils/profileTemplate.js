@@ -17,7 +17,7 @@ export function profileTemplate(data) {
   const section = (title, content) => content ? `\n## ${title}\n\n${content}\n` : '';
 
   const header = [
-    d.name ? `# ${d.name}` : '# My GitHub Profile',
+    d.name ? `# ${d.name}` : '# Welcome to My GitHub Profile',
     d.tagline ? `\n${d.tagline}\n` : '',
   ].join('\n');
 
