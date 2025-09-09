@@ -227,8 +227,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you have any questions or need help:
 
 - Create an issue on GitHub
-- Check out the [Wiki](https://github.com/yourusername/profile-readme-generator/wiki)
-- Join our [Discussions](https://github.com/yourusername/profile-readme-generator/discussions)
+
 
 ---
 
@@ -236,6 +235,6 @@ If you have any questions or need help:
 
 **Built with ❤️ by developers, for developers**
 
-[⭐ Star this repo](https://github.com/yourusername/profile-readme-generator) if you found it helpful!
+[⭐ Star this repo](https://github.com/Sakthi102003/Readme-Generator) if you found it helpful!
 
 </div>
