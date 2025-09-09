@@ -30,25 +30,9 @@ export default function Footer() {
               <a href="/generator" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
                 Generator
               </a>
-              <a href="#" className="block text-slate-600 hover:text-blue-600 transition-colors duration-200">
-                Documentation
-              </a>
             </div>
           </div>
 
-          {/* Tech Stack */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-slate-900">Built With</h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge badge-blue">React</span>
-              <span className="badge badge-purple">Vite</span>
-              <span className="badge badge-green">Tailwind CSS</span>
-              <span className="badge badge-blue">Markdown</span>
-            </div>
-            <p className="text-xs text-slate-500">
-              Open source and free to use
-            </p>
-          </div>
         </div>
 
         <div className="border-t border-slate-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
@@ -57,7 +41,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-6 text-sm">
             <a 
-              href="#" 
+              href="https://github.com/Sakthi102003/Readme-Generator" 
               className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
             >
               ⭐ GitHub

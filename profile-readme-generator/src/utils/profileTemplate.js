@@ -1,5 +1,5 @@
 // Converts user data to a Markdown README string
-import { defaultSkills } from '../config';
+import { defaultSkills, socialFields } from '../config';
 
 export function profileTemplate(data) {
   const d = data || {};
@@ -39,9 +39,28 @@ export function profileTemplate(data) {
     .map(p => `- ${p.link ? `[${p.name || p.link}](${p.link})` : (p.name || 'Project')}${p.description ? ` — ${p.description}` : ''}`)
     .join('\n');
 
+  // Create a mapping of social field names to their configurations
+  const socialsMap = socialFields.reduce((acc, social) => {
+    acc[social.id] = social;
+    return acc;
+  }, {});
+
   const socialsMd = Object.entries(socials)
     .filter(([_, v]) => v)
-    .map(([k, v]) => `- **${capitalize(k)}**: ${formatSocial(k, v)}`)
+    .map(([k, v]) => {
+      const socialConfig = socialsMap[k];
+      const icon = socialConfig?.icon;
+      const isImageIcon = icon && (icon.startsWith('http') || icon.startsWith('data:'));
+      
+      let iconMd = '';
+      if (isImageIcon) {
+        iconMd = `<img src="${icon}" alt="${socialConfig.label}" width="20" height="20" /> `;
+      } else if (icon) {
+        iconMd = `${icon} `;
+      }
+      
+      return `<p>${iconMd}<strong>${capitalize(k)}:</strong> ${formatSocial(k, v)}</p>`;
+    })
     .join('\n');
 
   const statsMd = username
@@ -59,7 +78,7 @@ export function profileTemplate(data) {
     section('GitHub Stats', statsMd),
     section('Featured Projects', projectsMd),
     section('Fun Fact', d.funFact),
-    section('Social Profiles', socialsMd),
+    section('Connect with Me', socialsMd),
   ].filter(Boolean).join('\n');
 }
 

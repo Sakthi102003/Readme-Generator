@@ -441,10 +441,46 @@ export const defaultSkills = [
 ];
 
 export const socialFields = [
-  { id: 'github', label: 'GitHub Username', placeholder: '' },
-  { id: 'linkedin', label: 'LinkedIn URL', placeholder: '' },
-  { id: 'twitter', label: 'Twitter/X URL', placeholder: '' },
-  { id: 'website', label: 'Website/Portfolio', placeholder: '' },
-  { id: 'email', label: 'Email', placeholder: '' },
-  { id: 'instagram', label: 'Instagram URL', placeholder: '' },
+  { 
+    id: 'github', 
+    label: 'GitHub Username', 
+    placeholder: '', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+    color: '#333'
+  },
+  { 
+    id: 'linkedin', 
+    label: 'LinkedIn URL', 
+    placeholder: '', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg',
+    color: '#0077B5'
+  },
+  { 
+    id: 'twitter', 
+    label: 'Twitter/X URL', 
+    placeholder: '', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg',
+    color: '#1DA1F2'
+  },
+  { 
+    id: 'website', 
+    label: 'Website/Portfolio', 
+    placeholder: '', 
+    icon: '🌐',
+    color: '#666'
+  },
+  { 
+    id: 'email', 
+    label: 'Email', 
+    placeholder: '', 
+    icon: '📧',
+    color: '#D44638'
+  },
+  { 
+    id: 'instagram', 
+    label: 'Instagram URL', 
+    placeholder: '', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/instagram/instagram-original.svg',
+    color: '#E4405F'
+  },
 ];

@@ -23,28 +23,9 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <Link 
-              to="/" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive('/') 
-                  ? 'bg-blue-100 text-blue-700' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/generator" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive('/generator') 
-                  ? 'bg-blue-100 text-blue-700' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              Generator
-            </Link>
+            
             <a 
-              href="https://github.com" 
+              href="https://github.com/Sakthi102003/Readme-Generator" 
               target="_blank" 
               rel="noreferrer" 
               className="btn-outline btn-sm ml-4"

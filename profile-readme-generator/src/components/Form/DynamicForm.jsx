@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import CheckboxGroup from './CheckboxGroup';
 import InputField from './InputField';
+import SocialInputField from './SocialInputField';
 import TextArea from './TextArea';
 
 // Renders a schema-driven form. Keeps local state and lifts changes up with debounce.
@@ -60,6 +61,7 @@ export default function DynamicForm({ schema, value, onChange }) {
         );
       case 'group': {
         const groupVal = form[field.id] || {};
+        const isSocialGroup = field.id === 'socials';
         
         return (
           <div key={field.id} className="animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
@@ -70,14 +72,27 @@ export default function DynamicForm({ schema, value, onChange }) {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {field.fields.map((sf) => (
-                  <InputField
-                    key={sf.id}
-                    id={`${field.id}.${sf.id}`}
-                    label={sf.label}
-                    placeholder={sf.placeholder}
-                    value={groupVal[sf.id] || ''}
-                    onChange={(v) => setField(field.id, { ...groupVal, [sf.id]: v })}
-                  />
+                  isSocialGroup ? (
+                    <SocialInputField
+                      key={sf.id}
+                      id={`${field.id}.${sf.id}`}
+                      label={sf.label}
+                      placeholder={sf.placeholder}
+                      value={groupVal[sf.id] || ''}
+                      onChange={(v) => setField(field.id, { ...groupVal, [sf.id]: v })}
+                      icon={sf.icon}
+                      color={sf.color}
+                    />
+                  ) : (
+                    <InputField
+                      key={sf.id}
+                      id={`${field.id}.${sf.id}`}
+                      label={sf.label}
+                      placeholder={sf.placeholder}
+                      value={groupVal[sf.id] || ''}
+                      onChange={(v) => setField(field.id, { ...groupVal, [sf.id]: v })}
+                    />
+                  )
                 ))}
               </div>
             </div>

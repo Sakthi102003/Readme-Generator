@@ -59,18 +59,6 @@ export default function Home() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-md mx-auto mt-12">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-blue-600">∞</div>
-              <div className="text-sm text-slate-600">Profiles Created</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-purple-600">∞</div>
-              <div className="text-sm text-slate-600">Templates</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-600">100%</div>
-              <div className="text-sm text-slate-600">Free</div>
-            </div>
           </div>
         </div>
       </div>
@@ -126,10 +114,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            <Link to="/generator" className="btn inline-flex mt-6">
-              Get Started Now →
-            </Link>
           </div>
 
           <div className="card-elevated p-8 bg-gradient-to-br from-blue-50 to-purple-50">
@@ -149,7 +133,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <div className="container-lg py-16">
-        <div className="card-elevated p-12 text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="card-elevated p-12 text-center bg-gradient-to-r from-white via-white/600 to-white text-black">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Stand Out?
           </h2>
