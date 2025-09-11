@@ -483,4 +483,11 @@ export const socialFields = [
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/instagram/instagram-original.svg',
     color: '#E4405F'
   },
+  { 
+    id: 'medium', 
+    label: 'Medium URL', 
+    placeholder: '', 
+    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/medium.svg',
+    color: '#12100E'
+  },
 ];
