@@ -47,10 +47,10 @@ export default function Footer() {
               ⭐ GitHub
             </a>
             <a 
-              href="#" 
+              href="" 
               className="text-slate-600 hover:text-blue-600 transition-colors duration-200"
             >
-              � Share
+               🔗Share
             </a>
           </div>
         </div>

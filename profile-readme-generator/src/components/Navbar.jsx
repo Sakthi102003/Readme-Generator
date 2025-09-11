@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from './Logo';
 
 export default function Navbar() {
   const location = useLocation();
@@ -14,11 +15,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center space-x-2 font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-200"
+            className="flex items-center space-x-2 font-bold text-xl hover:scale-105 transition-transform duration-200"
           >
-            <span className="text-2xl">📝</span>
-            <span className="hidden sm:inline">Profile README Generator</span>
-            <span className="sm:hidden">README Gen</span>
+            <Logo />
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="hidden sm:inline">Profile README Generator</span>
+              <span className="sm:hidden">README Gen</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
