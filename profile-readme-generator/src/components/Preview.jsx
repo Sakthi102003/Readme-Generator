@@ -40,7 +40,52 @@ export default function Preview({ data }) {
       {/* Content */}
       {activeTab === 'preview' ? (
         <div className="prose max-w-none p-6 bg-white rounded-b-lg border border-t-0">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              img: ({node, ...props}) => {
+                const alt = String(props.alt || '');
+                // If it's a skill icon, render smaller
+                if (/^skill:/i.test(alt)) {
+                  const cleanAlt = alt.replace(/^skill:\s*/i, '');
+                  return (
+                    <img
+                      alt={cleanAlt}
+                      {...props}
+                      style={{
+                        width: 28,
+                        height: 28,
+                        objectFit: 'contain',
+                        verticalAlign: 'middle',
+                        display: 'inline-block',
+                        marginRight: 8,
+                        marginBottom: 8
+                      }}
+                    />
+                  );
+                }
+                // Social badges from shields.io -> align horizontally with spacing
+                const src = String(props.src || '');
+                if (src.includes('img.shields.io')) {
+                  return (
+                    <img
+                      {...props}
+                      alt={alt}
+                      style={{
+                        height: 28,
+                        objectFit: 'contain',
+                        verticalAlign: 'middle',
+                        display: 'inline-block',
+                        marginRight: 8,
+                        marginBottom: 8
+                      }}
+                    />
+                  );
+                }
+                return <img {...props} alt={alt} style={{ maxWidth: '100%' }} />;
+              }
+            }}
+          >{markdown}</ReactMarkdown>
         </div>
       ) : (
         <div className="relative">

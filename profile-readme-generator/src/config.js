@@ -42,7 +42,7 @@ export const defaultSkills = [
   },
   {
     name: 'TailwindCSS',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg'
+    icon: 'https://cdn.jsdelivr.net/npm/devicon@latest/icons/tailwindcss/tailwindcss-plain.svg'
   },
   {
     name: 'Bootstrap',
@@ -110,7 +110,7 @@ export const defaultSkills = [
   },
   {
     name: 'Rust',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg'
+    icon: 'https://cdn.jsdelivr.net/npm/devicon@latest/icons/rust/rust-original.svg'
   },
   {
     name: 'PHP',
@@ -194,7 +194,7 @@ export const defaultSkills = [
   // PHP Frameworks
   {
     name: 'Laravel',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg'
+    icon: 'https://cdn.jsdelivr.net/npm/devicon@latest/icons/laravel/laravel-original.svg'
   },
   {
     name: 'Symfony',
@@ -262,7 +262,7 @@ export const defaultSkills = [
   // Cloud & DevOps
   {
     name: 'AWS',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg'
+    icon: 'https://cdn.jsdelivr.net/npm/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg'
   },
   {
     name: 'GCP',
@@ -380,7 +380,7 @@ export const defaultSkills = [
   },
   {
     name: 'Gradle',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gradle/gradle-plain.svg'
+    icon: 'https://cdn.jsdelivr.net/npm/devicon@latest/icons/gradle/gradle-plain.svg'
   },
   {
     name: 'Maven',
@@ -457,10 +457,10 @@ export const socialFields = [
   },
   { 
     id: 'twitter', 
-    label: 'Twitter/X URL', 
+    label: 'X URL', 
     placeholder: '', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg',
-    color: '#1DA1F2'
+    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg',
+    color: '#000000'
   },
   { 
     id: 'website', 
@@ -480,7 +480,7 @@ export const socialFields = [
     id: 'instagram', 
     label: 'Instagram URL', 
     placeholder: '', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/instagram/instagram-original.svg',
+    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg',
     color: '#E4405F'
   },
   { 

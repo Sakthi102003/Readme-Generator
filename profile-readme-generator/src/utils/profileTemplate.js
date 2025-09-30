@@ -16,17 +16,16 @@ export function profileTemplate(data) {
 
   const section = (title, content) => content ? `\n## ${title}\n\n${content}\n` : '';
 
-  // Create header with avatar if provided
+  // Create header
   const headerContent = [];
   
-  if (d.avatar) {
-    headerContent.push(`<div align="center">\n\n<img src="${d.avatar}" alt="${d.name || 'Profile'}" width="200" height="200" style="border-radius: 50%;" />\n\n</div>`);
-  }
+  const safeName = escapeMarkdown((d.name || '').trim());
+  const safeTagline = escapeMarkdown((d.tagline || '').trim());
   
-  headerContent.push(d.name ? `# ${d.name}` : '# Welcome to My GitHub Profile');
+  headerContent.push(safeName ? `# ${safeName}` : '# Welcome to My GitHub Profile');
   
-  if (d.tagline) {
-    headerContent.push(`\n*${d.tagline}*\n`);
+  if (safeTagline) {
+    headerContent.push(`\n**${safeTagline}**\n`);
   }
 
   const header = headerContent.join('\n');
@@ -34,20 +33,28 @@ export function profileTemplate(data) {
   const about = d.about ? d.about : '';
 
   const skills = skillsArr.length
-    ? `<div align="center">\n\n` + 
-      skillsArr.map((s) => {
+    ? skillsArr.map((s) => {
         const icon = skillsMap[s];
-        return icon 
-          ? `<img src="${icon}" alt="${s}" width="45" height="45" title="${s}" />`
-          : `<code>${s}</code>`;
-      }).join('&nbsp;&nbsp;&nbsp;') +
-      `\n\n</div>`
+        if (icon) {
+          const url = getSkillLink(s);
+          // Make icon clickable; keep alt marker for preview sizing and use title for tooltip
+          return `[![skill:${s}](${icon} "${s}")](${url})`;
+        }
+        return `\`${s}\``;
+      }).join(' ')
     : '';
 
   const projectsMd = projects
     .filter(p => p && (p.name || p.link || p.description))
-    .map(p => `- ${p.link ? `[${p.name || p.link}](${p.link})` : (p.name || 'Project')}${p.description ? ` — ${p.description}` : ''}`)
-    .join('\n');
+    .map(p => {
+      const title = p.link
+        ? `**[${p.name || p.link}](${p.link})**`
+        : `**${p.name || 'Project'}**`;
+      const desc = p.description ? ` — ${p.description}` : '';
+      return `- ${title}${desc}`;
+    })
+    // Add a blank line between entries for visual spacing
+    .join('\n\n');
 
   // Create a mapping of social field names to their configurations
   const socialsMap = socialFields.reduce((acc, social) => {
@@ -72,19 +79,19 @@ export function profileTemplate(data) {
     .join(' ');
 
   // Create social section without visitor counter
-  const socialSection = socialsMd ? `<div align="center">\n\n${socialsMd}\n\n</div>` : '';
+  const socialSection = socialsMd ? `${socialsMd}` : '';
 
   // Add visitor counter as separate section - always create if username exists
   const visitorCounter = username 
-    ? `<div align="center">\n\n![Profile Views](https://komarev.com/ghpvc/?username=${username}&label=Profile%20views&color=0e75b6&style=flat)\n\n</div>` 
+    ? `![Profile Views](https://komarev.com/ghpvc/?username=${username}&label=Profile%20views&color=0e75b6&style=flat)` 
     : '';
 
   const statsMd = username
-    ? `<div align="center">\n\n${[
+    ? [
         `![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=transparent)`,
         `![GitHub Streak](https://streak-stats.demolab.com?user=${username}&theme=transparent)`,
         `![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=transparent)`,
-      ].join('\n\n')}\n\n</div>`
+      ].join('\n\n')
     : '';
 
   // Build sections array - always include header
@@ -116,12 +123,50 @@ export function profileTemplate(data) {
   if (projectsMd) {
     sections.push(section('Featured Projects', projectsMd));    // Additional: Projects
   }
-  
-  if (d.funFact) {
-    sections.push(section('Fun Fact', d.funFact));             // Additional: Fun Fact
-  }
 
   return sections.join('\n');
+}
+
+// Extracts a usable image URL from various inputs (raw URL, HTML embed snippet, Tenor/Imgur etc.)
+function extractImageUrl(input) {
+  if (!input) return '';
+  const val = String(input).trim();
+  // If it's already a direct URL
+  if (/^https?:\/\//i.test(val)) return val;
+  // Try to pull src="..." from an HTML snippet
+  const srcMatch = val.match(/src\s*=\s*"([^"]+)"/i) || val.match(/src\s*=\s*'([^']+)'/i);
+  if (srcMatch && srcMatch[1]) return srcMatch[1];
+  // Tenor/embed script blocks - try to find a URL inside
+  const urlMatch = val.match(/https?:[^\s"')]+\.(?:png|jpe?g|gif|webp|svg)/i);
+  if (urlMatch) return urlMatch[0];
+  return '';
+}
+
+// Very small allowlist sanitizer for <img src>
+function sanitizeUrlForImgSrc(url) {
+  if (!url) return '';
+  const trimmed = String(url).trim();
+  // Only allow http(s) and data URIs to keep README safe
+  if (/^(https?:|data:)/i.test(trimmed)) return trimmed;
+  return '';
+}
+
+// Escapes Markdown special characters in user-provided text
+function escapeMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/([*_`~])/g, '\\$1') // emphasis, code, strikethrough
+    .replace(/^(\s*)#/gm, '$1\\#') // headings
+    .replace(/\|/g, '\\|'); // table pipes
+}
+
+// Escape characters in HTML attributes
+function escapeHtmlAttr(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 function capitalize(s) { return (s || '').charAt(0).toUpperCase() + (s || '').slice(1); }
@@ -136,7 +181,7 @@ function getSocialLabel(key) {
   const labels = {
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    twitter: 'Twitter',
+    twitter: 'X',
     instagram: 'Instagram',
     medium: 'Medium',
     website: 'Website',
@@ -149,13 +194,42 @@ function getSocialLogo(key) {
   const logos = {
     github: 'github',
     linkedin: 'linkedin',
-    twitter: 'twitter',
+    twitter: 'x',
     instagram: 'instagram',
     medium: 'medium',
     website: 'globe',
     email: 'gmail'
   };
   return logos[key] || key;
+}
+
+function getSkillLink(name) {
+  const n = (name || '').toLowerCase();
+  const map = {
+    'html': 'https://developer.mozilla.org/docs/Web/HTML',
+    'css': 'https://developer.mozilla.org/docs/Web/CSS',
+    'javascript': 'https://developer.mozilla.org/docs/Web/JavaScript',
+    'typescript': 'https://www.typescriptlang.org/',
+    'react': 'https://react.dev/',
+    'vue.js': 'https://vuejs.org/',
+    'angular': 'https://angular.dev/',
+    'svelte': 'https://svelte.dev/',
+    'node.js': 'https://nodejs.org/',
+    'python': 'https://www.python.org/',
+    'java': 'https://www.oracle.com/java/',
+    'rust': 'https://www.rust-lang.org/',
+    'go': 'https://go.dev/',
+    'php': 'https://www.php.net/',
+    'kotlin': 'https://kotlinlang.org/',
+    'swift': 'https://developer.apple.com/swift/',
+    'mysql': 'https://www.mysql.com/',
+    'postgresql': 'https://www.postgresql.org/',
+    'mongodb': 'https://www.mongodb.com/',
+    'docker': 'https://www.docker.com/'
+  };
+  if (map[n]) return map[n];
+  const encoded = encodeURIComponent(name || '');
+  return `https://www.google.com/search?q=${encoded}`;
 }
 
 function formatSocialUrl(key, value) {
@@ -168,7 +242,7 @@ function formatSocialUrl(key, value) {
     return `mailto:${value}`;
   }
   if (key === 'twitter' && !value.startsWith('http')) {
-    return `https://twitter.com/${value.replace('@', '')}`;
+    return `https://x.com/${value.replace('@', '')}`;
   }
   if (key === 'linkedin' && !value.startsWith('http')) {
     return `https://linkedin.com/in/${value}`;
