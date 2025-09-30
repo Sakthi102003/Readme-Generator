@@ -23,7 +23,6 @@ export default function Home() {
     'Technical Skills & Stack',
     'GitHub Statistics & Analytics',
     'Featured Projects Showcase',
-    'Fun Facts & Personal Touch',
     'Social Media Links',
     'Contact Information'
   ];
